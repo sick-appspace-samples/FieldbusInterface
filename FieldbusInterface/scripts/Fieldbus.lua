@@ -21,12 +21,10 @@ local fbHandle = FieldBus.create()
 --End of Global Scope-----------------------------------------------------------
 
 --Start of Function and Event Scope---------------------------------------------
-----------------------------------------------------------------------
--- handleOnNewData
--- brief: Handles the event OnNewData from the component FieldBus.
---        The received data will be sent back to the PLC.
--- param[in] data the data received from the field bus
-----------------------------------------------------------------------
+
+---Handles the event OnNewData from the component FieldBus.
+---The received data will be sent back to the PLC.
+---@param data binary The data received from the field bus
 local function handleOnNewData(data)
   print('>Data received from PLC: ' .. data)
   -- Tranmit the received data back to the PLC
@@ -40,12 +38,9 @@ end
 -- over the Confirmed Messaging procotol
 FieldBus.register(fbHandle, 'OnNewData', handleOnNewData)
 
-----------------------------------------------------------------------
--- handleOnControlBitsOutChanged
--- brief: Handles the event OnControlBitsOutChanged from the component FieldBus.
---        The received data will be sent back to the PLC but whithin the ControlBitsIn.
--- param[in] data the updated value of the control bits
-----------------------------------------------------------------------
+---Handles the event OnControlBitsOutChanged from the component FieldBus.
+---The received data will be sent back to the PLC but whithin the ControlBitsIn.
+---@param data int The updated value of the control bits
 local function handleOnControlBitsOutChanged(data)
   print('Control Bits Out (from PLC):' .. data)
   -- Tranmit the received data back to the PLC within the ControlBitsIn
